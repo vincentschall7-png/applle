@@ -1,0 +1,63 @@
+{
+  "name": "applle-2-0",
+  "version": "0.1.0",
+  "description": "Electron App mit Handy-UI: YouTube, Google, Einstellungen",
+  "main": "main.js",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "web": "node server.web.js",
+    "dist": "electron-builder --win",
+    "dist:dir": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^28.3.1",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "electron-updater": "^6.1.7"
+  },
+  "build": {
+    "appId": "com.applle.app",
+    "productName": "Applle 2.1",
+    "files": [
+      "main.js",
+      "preload.js",
+      "server.web.js",
+      "renderer/**/*",
+      "Max auto spiel/**/*",
+      "schreiber/**/*",
+      "whisper/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "OWNER_HERE",
+        "repo": "REPO_HERE"
+      }
+    ],
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
